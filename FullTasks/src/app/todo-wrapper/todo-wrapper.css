@@ -1,0 +1,9 @@
+.wrapper {
+  max-width: 500px;
+  margin: 50px auto;
+  background-color: #1e1e1e;
+  padding: 25px;
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.05);
+  color: #fff;
+}

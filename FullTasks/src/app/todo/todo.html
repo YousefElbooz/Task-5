@@ -1,0 +1,24 @@
+
+<div class="todos">
+    <header>
+        <h1 class=" ml-6 text-5xl">Todo List</h1>
+    </header>
+    <form (submit)="addTodo()">
+        <input 
+            type="text" 
+            name="inputTodo" 
+            placeholder="Enter todo..."
+            class="todo-input"
+            [(ngModel)]="inputTodo" />
+        <input type="submit" value="Add Todo" class="todo-submit" />
+    </form>
+    
+    @for (todo of todos; track $index) {
+        <div class="todo {{todo.completed ? 'done' :''}}">
+            <div class="id">{{$index}}</div>
+            <div class="icon {{todo.completed ? 'text-2xl' :'text-1xl'}} " (click)="toggleDone($index)" >{{todo.completed ? '✅' :'◻️'}}</div>
+            <div class="content" (click)="toggleDone($index)">{{todo.content}}</div>
+            <button class="delete" (click)="deleteTodo($index)">Remove</button>
+        </div>
+    }
+</div>

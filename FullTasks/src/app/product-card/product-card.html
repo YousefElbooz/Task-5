@@ -1,0 +1,20 @@
+<div class="card">
+  <img [src]="product.image" [alt]="product.name" class="product-img" />
+
+  <h2>{{ product.name }}</h2>
+
+  <p class="price">{{ product.price | currency:'EGP':'symbol':'1.2-2' }}</p>
+
+  <p [style.color]="product.stock === 0 ? 'red' : 'green'">
+    {{ product.stock === 0 ? 'Out of Stock' : 'In Stock' }}
+  </p>
+
+  <p>
+    @for (star of getstarArray(); track $index) {
+      ⭐
+    }
+    ({{ product.rate }}/5)
+  </p>
+
+  <button [disabled]="product.stock === 0">Add to Cart</button>
+</div>

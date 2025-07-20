@@ -1,0 +1,10 @@
+<ul class="todo-list">
+  @for (todo of todos; track $index) {
+    <li class="todo-item">
+      <div class="icon {{todo.completed ? 'text-2xl' :'text-1xl'}} " (click)="toggleDone($index)" >{{todo.completed ? '✅' :'◻️'}}</div>
+      <span class="id">#{{ $index + 1 }}</span>
+      <span class="content">{{ todo.content }}</span>
+      <button class="remove" (click)="removeTodo($index)">❌</button>
+    </li>
+  }
+</ul>

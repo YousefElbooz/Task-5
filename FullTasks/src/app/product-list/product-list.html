@@ -1,0 +1,6 @@
+<h1 class="mt-20 ml-20 text-7xl">Product Gallery</h1>
+<div class="product">
+    @for (item of products; track $index) {
+        <app-product-card [product]="item"> </app-product-card>
+    }
+</div>
