@@ -1,19 +1,24 @@
 <div class="card">
-  <img [src]="product.image" [alt]="product.name" class="product-img" />
+  <img [src]="product.thumbnail" [alt]="product.title" class="product-img" />
 
-  <h2>{{ product.name }}</h2>
+  <h2>{{ product.title }}</h2>
 
-  <p class="price">{{ product.price | currency:'EGP':'symbol':'1.2-2' }}</p>
+  <p class="price">
+    {{ product.price | currency:'EGP':'symbol':'1.2-2' }}
+    @if (product.discountPercentage > 0) {
+      <span class="discount">(-{{ product.discountPercentage }}%)</span>
+    }
+  </p>
 
   <p [style.color]="product.stock === 0 ? 'red' : 'green'">
     {{ product.stock === 0 ? 'Out of Stock' : 'In Stock' }}
   </p>
 
-  <p>
+  <p class="rating">
     @for (star of getstarArray(); track $index) {
       ⭐
     }
-    ({{ product.rate }}/5)
+    ({{ product.rating }}/5)
   </p>
 
   <button [disabled]="product.stock === 0">Add to Cart</button>

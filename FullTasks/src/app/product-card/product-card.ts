@@ -11,6 +11,6 @@ export class ProductCard {
   @Input() product!: Product;
 
   getstarArray(): number[] {
-    return Array.from({ length: this.product.rate });
+    return Array.from({ length: this.product.rating});
   }
 }
