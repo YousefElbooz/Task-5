@@ -1,25 +1,25 @@
-<div class="card">
-  <img [src]="product.thumbnail" [alt]="product.title" class="product-img" />
+<a [routerLink]="['/products', product.id]" class="card hover:shadow-lg transition block text-inherit no-underline">
+  <div class="card p-4 rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900">
+    <img [src]="product.thumbnail" [alt]="product.title" class="w-full h-48 object-cover rounded-md mb-4" />
 
-  <h2>{{ product.title }}</h2>
+    <h2 class="text-lg font-semibold mb-2">{{ product.title }}</h2>
 
-  <p class="price">
-    {{ product.price | currency:'EGP':'symbol':'1.2-2' }}
-    @if (product.discountPercentage > 0) {
-      <span class="discount">(-{{ product.discountPercentage }}%)</span>
-    }
-  </p>
+    <p class="text-emerald-600 font-bold mb-1">
+      {{ product.price | currency: 'EGP' : 'symbol' : '1.2-2' }}
+      @if (product.discountPercentage > 0) {
+        <span class="text-sm text-red-500">(-{{ product.discountPercentage }}%)</span>
+      }
+    </p>
 
-  <p [style.color]="product.stock === 0 ? 'red' : 'green'">
-    {{ product.stock === 0 ? 'Out of Stock' : 'In Stock' }}
-  </p>
+    <p [style.color]="product.stock === 0 ? 'red' : 'green'" class="mb-2">
+      {{ product.stock === 0 ? 'Out of Stock' : 'In Stock' }}
+    </p>
 
-  <p class="rating">
-    @for (star of getstarArray(); track $index) {
-      ⭐
-    }
-    ({{ product.rating }}/5)
-  </p>
-
-  <button [disabled]="product.stock === 0">Add to Cart</button>
-</div>
+    <div class="text-yellow-500">
+      @for (star of getstarArray(); track $index) {
+        ⭐
+      }
+      <span class="text-sm text-gray-500">({{ product.rating }}/5)</span>
+    </div>
+  </div>
+</a>
